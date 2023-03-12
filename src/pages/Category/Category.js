@@ -5,6 +5,8 @@ import Config from "react-native-config";
 import CategoryCard from "../../components/CategoryCard"
 import UseFetch from "../../hooks/UseFetch";
 import styles from "./category.style"
+import Loading from "../../components/loading/Loading";
+import Error from "../../components/error";
 
 function Category(){
     
@@ -12,10 +14,10 @@ function Category(){
     
     const renderCategory=({item}) => <CategoryCard category={item}></CategoryCard>
     if(loading){
-        return <ActivityIndicator size="large"></ActivityIndicator>
+        return <Loading></Loading>
     }
     if(error){
-        return <Text>{error}</Text>}
+        return <Error></Error>}
     return(
 
         <SafeAreaView style={styles.container}>
