@@ -1,5 +1,5 @@
 import React from "react";
-import {View,Text,Image} from "react-native";
+import {View,Text,Image, TouchableOpacity, Linking} from "react-native";
 import styles from "./DetailCard.style"
 const   DetailCard=({detail})=>{
     return(
@@ -12,6 +12,8 @@ const   DetailCard=({detail})=>{
             <View style={styles.line}></View>
             <Text style={styles.text}>{detail.strInstructions}</Text>
             </View>
+            <TouchableOpacity style={styles.youtube} onPress={()=>{Linking.openURL(detail.strYoutube)}}
+            ><Text style={styles.youtubetext}>Watch On Youtube</Text></TouchableOpacity>
         </View>
         
     )
