@@ -8,11 +8,14 @@ import styles from "./category.style"
 import Loading from "../../components/loading/Loading";
 import Error from "../../components/error";
 
-function Category(){
+function Category({navigation}){
     
-    const {loading,data,error}=UseFetch(Config.API_URL)
+    const {loading,data,error}=UseFetch(Config.API_URL+"categories.php")
+    console.log(Config.API_URL+"categories.php")
+    const handleCategorySelect=(id)=>{navigation.navigate("Meals",{id})}
     
-    const renderCategory=({item}) => <CategoryCard category={item}></CategoryCard>
+    const renderCategory=({item}) => <CategoryCard category={item} 
+    onSelect={()=>handleCategorySelect(item.strCategory)}></CategoryCard>
     if(loading){
         return <Loading></Loading>
     }
@@ -22,7 +25,7 @@ function Category(){
 
         <SafeAreaView style={styles.container}>
             
-           <FlatList data={data} renderItem={renderCategory}></FlatList>
+           <FlatList data={data.categories} renderItem={renderCategory}></FlatList>
         </SafeAreaView>
     )
 }

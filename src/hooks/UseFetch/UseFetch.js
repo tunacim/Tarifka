@@ -8,7 +8,7 @@ function UseFetch(url){
     const fetchData= async ()=> {
         try {
             const {data:responseData}= await axios.get(url)
-            setData(responseData.categories)
+            setData(responseData)
             Setloading(false)
            
             
